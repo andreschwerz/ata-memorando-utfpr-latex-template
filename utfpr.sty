@@ -1,0 +1,87 @@
+\ProvidesPackage{utfpr}
+\usepackage[a4paper, top=1.7in,bottom=1in,right=1in,left=1in,headheight=65pt]{geometry}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+
+% yellow from UTFPR logo
+\definecolor{myyellow}{RGB}{254, 203, 41}
+
+% custom footers and headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\includegraphics[width=.08\textwidth]{img/brasao}}
+\chead{
+    {\small \sffamily Ministério da Educação}\\
+    {\small \bf \sffamily Universidade Tecnológica Federal do Paraná} \\
+    {\small \sffamily Câmpus Campo Mourão}\\
+    {\small \sffamily  Curso de Bacharelado em Ciência da Computação}
+}
+\rhead{\includegraphics[width=0.18\textwidth]{img/utfpr}}
+\lfoot{}
+\cfoot{
+    {\scriptsize \sffamily Câmpus Campo Mourão Via Rosalina Maria do Santos, 1233 }\\
+    {\scriptsize \sffamily CEP 87301-899 Caixa Postal: 271 Campo Mourão - PR - Brasil}\\
+    {\scriptsize \sffamily Telefone Geral +55 (44) 3518-1400}}
+\rfoot{\sffamily Página \thepage / \pageref{LastPage}}
+
+% custom headrule
+\renewcommand\headrule{
+\begin{minipage}{1\textwidth}
+{\color{black}\hrule height .5mm width \hsize}
+{\color{myyellow}\hrule height .5mm width \hsize}
+\end{minipage}}%
+
+% custom footrule
+\renewcommand\footrule{\begin{minipage}{1\textwidth}
+\hrule width \hsize height .1mm   
+\end{minipage}\par}%
+
+% custom page number
+\usepackage{lastpage}
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+% space between lines
+\linespread{1.6}
+
+% set serial, title and date.
+
+\newcommand{\serial}[1]{\newcommand{\serialM}{#1}}
+\newcommand{\data}[1]{\newcommand{\dataM}{#1}}
+\newcommand{\titulo}[1]{\newcommand{\tituloM}{#1}}
+
+\newcommand{\ata}{
+    \noindent
+    \begin{minipage}[t]{.49\textwidth}
+        \raggedright
+        \textbf{ATA n. {\serialM}}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{.49\textwidth}
+        \raggedleft
+        \textbf{Campo Mourão, \dataM.}
+    \end{minipage}
+    \\\\
+    \noindent
+    {\bf \tituloM}
+    \\
+}
+
+% set double column for signatures 
+\newcolumntype{P}[1]{>{\centering\arraybackslash\small}p{#1}}
+\newcommand{\doublesignature}[4]{
+    \begin{center}
+    \linespread{1.0}
+    \vspace{1.2cm}
+    \renewcommand{\arraystretch}{0.6}% 
+    \begin{tabular}{P{6cm} P{2cm} P{6cm}}
+        \rule{6cm}{.1mm}   & & \rule{6cm}{.1mm} \\
+        {\bf #1}           & & {\bf #3} \\
+        {\footnotesize #2} & & {\footnotesize#4} \\
+    \end{tabular}
+    \end{center}
+}
