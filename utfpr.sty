@@ -16,6 +16,18 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
+\usepackage{lipsum}
+\usepackage{todonotes}
+
+\usepackage{soul,color}
+\presetkeys{todonotes}{inline, author=\textbf{rag}, linecolor=green!70!white, backgroundcolor=blue!30!white, bordercolor=black!50, color=blue!30, size=\scriptsize}{}
+
+% Comando para correcoes.
+\newcommand{\correction}[2]{
+    \st{#1} \hl{#2}
+}
+
+
 % Retrieve the name of sender department and the acronym.
 \newcommand{\sender}[2]{
 	\newcommand{\senderMM}{#1}
@@ -97,12 +109,12 @@
 		\vspace{.5cm}
 	}
 	{
-		% Ata.
-		\newline
+		% Ata.	
 		\noindent
 		\newline
+        \newline
 		\begin{tabular}{@{}p{\textwidth}}
-		{\bf \tituloM} \\
+		{\bf \tituloM} \newline
 		\end{tabular}
 	}
 }
